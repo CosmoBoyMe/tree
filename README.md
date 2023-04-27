@@ -1,7 +1,7 @@
 <h1 align="center">Tree</h1>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/52293247/234836194-b26b0bd4-9a1c-473d-9b9d-4c6aa49d2f5a.PNG" width="40%"/>
+  <img src="https://user-images.githubusercontent.com/52293247/234836194-b26b0bd4-9a1c-473d-9b9d-4c6aa49d2f5a.PNG" width="50%"/>
 </p>
 
 ## ℹ️ About
