@@ -1,14 +1,38 @@
-# boilerplate_v2
+<h1 align="center">Tree</h1>
 
-Well, since I have to create a lot of new projects with pretty much the same configs, I decided to save a bit of my time.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/52293247/234836194-b26b0bd4-9a1c-473d-9b9d-4c6aa49d2f5a.PNG" width="40%"/>
+</p>
 
+## ℹ️ About
+application with a tree structure in which it is possible to add, remove and edit a node
 
-###  Technologies
-  * eslint
-  * stylelint
-  * prettier
-  * husky
-  * vite
-  * react
-  * typescript
-  * sass
+## 👁 Demo
+https://cosmoboyme.github.io/tree/
+
+##  🔧 Technologies
+  - React
+  - classnames
+  - Typescript
+  - Sass
+  - uuid
+
+  - stylelint
+  - prettier
+  - husky
+  - vite
+
+## Setup and Running
+
+### Clone repository:
+```bash
+  git clone https://github.com/CosmoBoyMe/tree.git
+```
+### Install dependencies:
+```bash
+  npm install
+```
+### Start development:
+```bash
+  npm run dev
+```
