@@ -1,0 +1,13 @@
+.node-form {
+  display: flex;
+  column-gap: 10px;
+
+  &__input {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid white;
+
+    border-radius: 5px;
+  }
+}
