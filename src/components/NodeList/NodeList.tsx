@@ -36,15 +36,17 @@ const NodeList: FC<Props> = ({
               }
             />
           </div>
-          <div className="node-list__node-children">
-            <NodeList
-              parentId={item.id}
-              items={item.children}
-              onClickDeleteNode={onClickDeleteNode}
-              onClickUpdateNodeText={onClickUpdateNodeText}
-              onSubmitAddNewChildToNode={onSubmitAddNewChildToNode}
-            />
-          </div>
+          {item.children.length > 0 && (
+            <div className="node-list__node-children">
+              <NodeList
+                parentId={item.id}
+                items={item.children}
+                onClickDeleteNode={onClickDeleteNode}
+                onClickUpdateNodeText={onClickUpdateNodeText}
+                onSubmitAddNewChildToNode={onSubmitAddNewChildToNode}
+              />
+            </div>
+          )}
         </div>
       ))}
     </div>
