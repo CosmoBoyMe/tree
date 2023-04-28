@@ -9,6 +9,7 @@ import {
   removeNodeFromTree,
   updateNodeText,
   addNewChildToNode,
+  cloneTree,
 } from './helpers';
 import './App.scss';
 import { Button } from '../Button/Button';
@@ -18,26 +19,27 @@ const App = () => {
 
   const handleDeleteNodeClick = (parentId: string | null, nodeId: string) => {
     if (parentId === null) {
-      const tree = treeData.filter((item) => item.id !== nodeId);
-      setTreeData(tree);
+      const newTree = cloneTree(treeData).filter((item) => item.id !== nodeId);
+      setTreeData(newTree);
     } else {
-      const tree = removeNodeFromTree(treeData, parentId, nodeId);
-      setTreeData(tree);
+      const newTree = removeNodeFromTree(treeData, parentId, nodeId);
+      setTreeData(newTree);
     }
   };
 
   const handleUpdateNodeTextClick = (nodeId: string, text: string) => {
-    const tree = updateNodeText(treeData, nodeId, text);
-    setTreeData(tree);
+    const newTree = updateNodeText(treeData, nodeId, text);
+    setTreeData(newTree);
   };
 
   const handleAddNewChildToNodeSubmit = (id: string, text: string) => {
-    const tree = addNewChildToNode(treeData, id, text);
-    setTreeData(tree);
+    const newTree = addNewChildToNode(treeData, id, text);
+    setTreeData(newTree);
   };
 
   const handleAddNewChildToTreeSubmit = (text: string) => {
-    setTreeData([...treeData, { id: getUniqueId(), text, children: [] }]);
+    const newTree = cloneTree(treeData);
+    setTreeData([...newTree, { id: getUniqueId(), text, children: [] }]);
   };
 
   const handleButtonResetClick = () => setTreeData([]);
@@ -57,7 +59,7 @@ const App = () => {
         </div>
         {treeData.length > 0 && (
           <div className="app__reset-button">
-            <Button text="RESET" onClick={handleButtonResetClick} />
+            <Button text="reset" onClick={handleButtonResetClick} />
           </div>
         )}
       </div>

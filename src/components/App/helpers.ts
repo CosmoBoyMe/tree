@@ -1,6 +1,12 @@
 import { NodeData } from '../../shared/types/NodeData';
 import { getUniqueId } from '../../shared/helpers/getUniqueId';
 
+const cloneTree = (tree: NodeData[]): NodeData[] =>
+  tree.map((item) => ({
+    ...item,
+    children: cloneTree(item.children),
+  }));
+
 const removeNodeFromTree = (
   tree: NodeData[],
   parentId: string | null,
@@ -51,4 +57,4 @@ const addNewChildToNode = (
   });
 };
 
-export { removeNodeFromTree, updateNodeText, addNewChildToNode };
+export { removeNodeFromTree, updateNodeText, addNewChildToNode, cloneTree };
