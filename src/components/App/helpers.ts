@@ -47,7 +47,7 @@ const addNewChildToNode = (
   return tree.map((item) => {
     if (item.id === nodeId) {
       const newChild = { id: getUniqueId(), text, children: [] };
-      return { ...item, text, children: [...item.children, newChild] };
+      return { ...item, children: [...item.children, newChild] };
     }
 
     return {
