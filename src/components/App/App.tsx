@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { getUniqueId } from '../../shared/helpers/getUniqueId';
 import { NodeList } from '../NodeList/NodeList';
@@ -17,25 +17,35 @@ import { Button } from '../Button/Button';
 const App = () => {
   const [treeData, setTreeData] = useState<NodeData[]>(mockTree);
 
-  const handleDeleteNodeClick = (parentId: string | null, nodeId: string) => {
-    if (parentId === null) {
-      const newTree = cloneTree(treeData).filter((item) => item.id !== nodeId);
-      setTreeData(newTree);
-    } else {
-      const newTree = removeNodeFromTree(treeData, parentId, nodeId);
-      setTreeData(newTree);
-    }
-  };
+  const handleDeleteNodeClick = useCallback(
+    (parentId: string | null, nodeId: string) => {
+      setTreeData((prevTree) => {
+        if (parentId === null) {
+          const newTree = cloneTree(prevTree).filter(
+            (item) => item.id !== nodeId
+          );
+          return newTree;
+        }
+        const newTree = removeNodeFromTree(prevTree, parentId, nodeId);
+        return newTree;
+      });
+    },
+    []
+  );
 
-  const handleUpdateNodeTextClick = (nodeId: string, text: string) => {
-    const newTree = updateNodeText(treeData, nodeId, text);
-    setTreeData(newTree);
-  };
+  const handleUpdateNodeTextClick = useCallback(
+    (nodeId: string, text: string) => {
+      setTreeData((prevTree) => updateNodeText(prevTree, nodeId, text));
+    },
+    []
+  );
 
-  const handleAddNewChildToNodeSubmit = (id: string, text: string) => {
-    const newTree = addNewChildToNode(treeData, id, text);
-    setTreeData(newTree);
-  };
+  const handleAddNewChildToNodeSubmit = useCallback(
+    (id: string, text: string) => {
+      setTreeData((prevTree) => addNewChildToNode(prevTree, id, text));
+    },
+    []
+  );
 
   const handleAddNewChildToTreeSubmit = (text: string) => {
     const newTree = cloneTree(treeData);
